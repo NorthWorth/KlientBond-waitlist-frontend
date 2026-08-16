@@ -1,4 +1,4 @@
-const API_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"  ? "http://localhost:5000"  : "https://YOUR-PRODUCTION-API-URL";
+const API_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"  ? "http://localhost:5000"  : "https://klientbond-waitlist-backend.onrender.com/";
 
 const forms =
   document.querySelectorAll(
