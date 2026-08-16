@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Verify your KlientBond waitlist email."
+  />
+
+  <title>Verify your email - KlientBond</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    /* =====================================================
+       VERIFICATION PAGE
+    ===================================================== */
+
+    .verify-page {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+
+      background: var(--background);
+
+      color: var(--text);
+    }
+
+
+    .verify-header {
+      width: 100%;
+
+      padding: 24px 0;
+    }
+
+
+    .verify-header .container {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .verify-logo {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      color: var(--text);
+
+      text-decoration: none;
+
+      font-size: 19px;
+
+      font-weight: 800;
+
+      letter-spacing: -0.5px;
+    }
+
+
+    .verify-logo-mark {
+      width: 28px;
+      height: 28px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 8px;
+
+      background: var(--purple);
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 800;
+    }
+
+
+    .verify-main {
+      flex: 1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 50px 20px 90px;
+    }
+
+
+    .verify-card {
+      width: min(100%, 480px);
+
+      padding: 42px 28px;
+
+      text-align: center;
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 24px;
+
+      box-shadow:
+        0 24px 70px
+        rgba(20, 18, 40, 0.07);
+    }
+
+
+    .verify-icon {
+      width: 64px;
+      height: 64px;
+
+      display: grid;
+
+      place-items: center;
+
+      margin: 0 auto 25px;
+
+      border-radius: 20px;
+
+      background: var(--purple-light);
+
+      color: var(--purple);
+
+      font-size: 25px;
+
+      font-weight: 700;
+    }
+
+
+    .verify-card .section-label {
+      margin-bottom: 13px;
+    }
+
+
+    .verify-card h1 {
+      margin: 0;
+
+      font-size: clamp(32px, 8vw, 46px);
+
+      line-height: 1.05;
+
+      letter-spacing: -2px;
+    }
+
+
+    .verify-message {
+      max-width: 390px;
+
+      margin: 16px auto 0;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.7;
+    }
+
+
+    .verify-action {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 100%;
+
+      min-height: 50px;
+
+      margin-top: 28px;
+
+      padding: 0 20px;
+
+      border: 0;
+
+      border-radius: 11px;
+
+      background: var(--black);
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+
+    .verify-action:hover {
+      background: #292a2f;
+
+      transform: translateY(-1px);
+    }
+
+
+    .verify-footer {
+      padding: 25px 20px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    /* =====================================================
+       LOADING
+    ===================================================== */
+
+    .verify-spinner {
+      width: 22px;
+      height: 22px;
+
+      margin: 2px auto 0;
+
+      border: 2px solid #e5e5eb;
+
+      border-top-color: var(--purple);
+
+      border-radius: 50%;
+
+      animation:
+        verifySpin 0.7s linear infinite;
+    }
+
+
+    @keyframes verifySpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    /* =====================================================
+       STATES
+    ===================================================== */
+
+    .verify-success .verify-icon {
+      background: #edf9f1;
+
+      color: #249653;
+    }
+
+
+    .verify-error .verify-icon {
+      background: #fff1f1;
+
+      color: #d94b4b;
+    }
+
+
+    .verify-hidden {
+      display: none;
+    }
+
+
+    @media (min-width: 768px) {
+
+      .verify-header {
+        padding: 30px 0;
+      }
+
+
+      .verify-main {
+        padding:
+          70px 30px
+          110px;
+      }
+
+
+      .verify-card {
+        padding: 55px 50px;
+
+        border-radius: 28px;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <div class="verify-page">
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="verify-header">
+
+      <div class="container">
+
+        <a
+          href="./index.html"
+          class="verify-logo"
+        >
+
+          <span class="verify-logo-mark">
+            K
+          </span>
+
+          KlientBond
+
+        </a>
+
+      </div>
+
+    </header>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="verify-main">
+
+      <section
+        class="verify-card"
+        id="verifyCard"
+      >
+
+        <!-- =========================
+             LOADING STATE
+        ========================== -->
+
+        <div id="loadingState">
+
+          <div class="verify-icon">
+
+            <div
+              class="verify-spinner"
+              aria-hidden="true"
+            ></div>
+
+          </div>
+
+
+          <p class="section-label">
+            ONE MOMENT
+          </p>
+
+
+          <h1>
+            Verifying your email.
+          </h1>
+
+
+          <p class="verify-message">
+            We're confirming your email address
+            and securing your place on the
+            KlientBond waitlist.
+          </p>
+
+        </div>
+
+
+        <!-- =========================
+             SUCCESS STATE
+        ========================== -->
+
+        <div
+          id="successState"
+          class="verify-hidden verify-success"
+        >
+
+          <div class="verify-icon">
+            ✓
+          </div>
+
+
+          <p class="section-label">
+            YOU'RE IN
+          </p>
+
+
+          <h1>
+            You're officially in.
+          </h1>
+
+
+          <p class="verify-message">
+            Your email has been verified and
+            your place on the KlientBond
+            waitlist is confirmed.
+          </p>
+
+
+          <a
+            href="./index.html"
+            class="verify-action"
+          >
+            Back to KlientBond
+          </a>
+
+        </div>
+
+
+        <!-- =========================
+             ERROR STATE
+        ========================== -->
+
+        <div
+          id="errorState"
+          class="verify-hidden verify-error"
+        >
+
+          <div class="verify-icon">
+            !
+          </div>
+
+
+          <p class="section-label">
+            VERIFICATION FAILED
+          </p>
+
+
+          <h1>
+            We couldn't verify that.
+          </h1>
+
+
+          <p
+            class="verify-message"
+            id="errorMessage"
+          >
+            This verification link is invalid
+            or has expired.
+          </p>
+
+
+          <a
+            href="./index.html"
+            class="verify-action"
+          >
+            Back to KlientBond
+          </a>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="verify-footer">
+
+      © 2026 KlientBond. All rights reserved.
+
+    </footer>
+
+  </div>
+
+
+  <!-- ===================================================
+       VERIFICATION SCRIPT
+  ==================================================== -->
+
+  <script>
+
+    const API_URL =
+      "http://localhost:5000";
+
+
+    const loadingState =
+      document.getElementById(
+        "loadingState"
+      );
+
+
+    const successState =
+      document.getElementById(
+        "successState"
+      );
+
+
+    const errorState =
+      document.getElementById(
+        "errorState"
+      );
+
+
+    const errorMessage =
+      document.getElementById(
+        "errorMessage"
+      );
+
+
+    /* =================================================
+       GET TOKEN FROM URL
+    ================================================= */
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const token =
+      params.get("token");
+
+
+    /* =================================================
+       SHOW ERROR
+    ================================================= */
+
+    function showError(message) {
+
+      loadingState.classList.add(
+        "verify-hidden"
+      );
+
+      successState.classList.add(
+        "verify-hidden"
+      );
+
+      errorState.classList.remove(
+        "verify-hidden"
+      );
+
+
+      errorMessage.textContent =
+        message ||
+        "This verification link is invalid or has expired.";
+
+    }
+
+
+    /* =================================================
+       SHOW SUCCESS
+    ================================================= */
+
+    function showSuccess() {
+
+      loadingState.classList.add(
+        "verify-hidden"
+      );
+
+      errorState.classList.add(
+        "verify-hidden"
+      );
+
+      successState.classList.remove(
+        "verify-hidden"
+      );
+
+    }
+
+
+    /* =================================================
+       VERIFY
+    ================================================= */
+
+    async function verifyEmail() {
+
+      if (!token) {
+
+        showError(
+          "This verification link is missing its token. Please request a new verification email."
+        );
+
+        return;
+
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+            `${API_URL}/api/waitlist/verify/${encodeURIComponent(token)}`
+          );
+
+
+        const data =
+          await response.json();
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            data.message ||
+            "Verification failed."
+          );
+
+        }
+
+
+        showSuccess();
+
+
+      } catch (error) {
+
+        console.error(
+          "Verification error:",
+          error
+        );
+
+
+        showError(
+          error.message
+        );
+
+      }
+
+    }
+
+
+    /* =================================================
+       START VERIFICATION
+    ================================================= */
+
+    verifyEmail();
+
+  </script>
+
+</body>
+</html>
