@@ -1,812 +1,868 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
+  <head>
+      <title>KlientBond - Join the Waitlist</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="KlientBond is a modern workspace for managing clients, projects, deliverables, files, follow-ups and more."
-  >
-
-  <meta name="theme-color" content="#ffffff">
-
-  <title>KlientBond — Your client business, organized.</title>
-
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
-
-  <header class="site-header">
-
-    <nav class="navbar container">
-
-      <a
-        href="#"
-        class="brand"
-        aria-label="KlientBond home"
+      <meta
+        name="description"
+        content="KlientBond is the modern workspace for managing your client business. Join the waitlist for early access."
       >
 
-        <img
-          src="assets/logo.jpg"
-          alt="KlientBond"
-          class="brand-logo"
-        >
-
-        <span class="brand-name">
-          KlientBond
-        </span>
-
-      </a>
-
-      <a
-        href="#waitlist"
-        class="nav-cta"
+      <meta
+        name="robots"
+        content="index, follow"
       >
-        Join waitlist
-      </a>
 
-    </nav>
+      <link
+        rel="canonical"
+        href="https://klientbond-waitlist.vercel.app/"
+      >
 
-  </header>
+      <!-- Open Graph -->
+      <meta
+        property="og:type"
+        content="website"
+      >
 
+      <meta
+        property="og:title"
+        content="KlientBond - Join the Waitlist"
+      >
 
-  <main>
+      <meta
+        property="og:description"
+        content="A modern workspace for managing your client business. Join the KlientBond waitlist for early access."
+      >
 
-    <!-- ===================================================
-         HERO
-    ==================================================== -->
+      <meta
+        property="og:url"
+        content="https://klientbond-waitlist.vercel.app/"
+      >
 
-    <section class="hero">
+      <meta
+        property="og:site_name"
+        content="KlientBond"
+      >
 
-      <div class="container hero-content">
+      <meta
+        property="og:image"
+        content="https://klientbond-waitlist.vercel.app/assets/logo.png"
+      >
 
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          The modern client workspace
-        </div>
+      <meta
+        property="og:image:alt"
+        content="KlientBond - Join the waitlist"
+      >
 
-        <h1>
-          Your client business,
-          <span>organized.</span>
-        </h1>
+      <!-- X -->
+      <meta
+        name="twitter:card"
+        content="summary_large_image"
+      >
 
-        <p class="hero-description">
-          Manage your clients, projects, deliverables,
-          files and follow-ups from one beautifully
-          organized workspace.
-        </p>
+      <meta
+        name="twitter:title"
+        content="KlientBond - Join the Waitlist"
+      >
 
-        <form
-          class="waitlist-form"
-          id="heroWaitlist"
+      <meta
+        name="twitter:description"
+        content="A modern workspace for managing your client business. Join the KlientBond waitlist for early access."
+      >
+
+      <meta
+        name="twitter:image"
+        content="https://klientbond-waitlist.vercel.app/assets/logo.png"
+      >
+  </head>
+
+  <body>
+
+    <!-- =====================================================
+        HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+      <nav class="navbar container">
+
+        <a
+          href="#"
+          class="brand"
+          aria-label="KlientBond home"
         >
 
-          <label
-            for="hero-email"
-            class="sr-only"
-          >
-            Email address
-          </label>
-
-          <input
-            type="email"
-            id="hero-email"
-            name="email"
-            placeholder="Enter your email"
-            autocomplete="email"
-            required
+          <img
+            src="assets/logo.jpg"
+            alt="KlientBond"
+            class="brand-logo"
           >
 
-          <button type="submit">
-            Join the waitlist
-            <span aria-hidden="true">→</span>
-          </button>
-
-        </form>
-
-        <p class="form-note">
-          Free to join · Be first to get early access
-        </p>
-
-      </div>
-
-
-      <!-- =================================================
-           PRODUCT PREVIEW
-      ================================================== -->
-
-      <div class="container hero-preview">
-
-        <div class="browser-frame">
-
-          <div class="browser-top">
-
-            <div class="browser-dots">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div class="browser-address">
-              klientbond
-            </div>
-
-          </div>
-
-          <div class="product-screenshot">
-
-            <img
-              src="assets/KlientBond-Screenshot.png"
-              alt="KlientBond client workspace dashboard"
-            >
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         AUDIENCE
-    ==================================================== -->
-
-    <section class="audience section">
-
-      <div class="container">
-
-        <p class="section-label">
-          BUILT FOR
-        </p>
-
-        <h2>
-          People who do client work.
-        </h2>
-
-        <div class="audience-list">
-
-          <span>Freelancers</span>
-          <span>Agencies</span>
-          <span>Consultants</span>
-          <span>Studios</span>
-          <span>Service businesses</span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         PROBLEM
-    ==================================================== -->
-
-    <section class="problem section">
-
-      <div class="container">
-
-        <div class="section-intro">
-
-          <p class="section-label">
-            THE PROBLEM
-          </p>
-
-          <h2>
-            Your client work shouldn't
-            live everywhere.
-          </h2>
-
-          <p class="section-description">
-            Clients, projects, files, tasks and
-            follow-ups quickly become scattered
-            across different tools.
-          </p>
-
-        </div>
-
-
-        <div class="tool-stack">
-
-          <div class="tool-item">
-
-            <span>Messages</span>
-
-            <strong>
-              WhatsApp
-            </strong>
-
-          </div>
-
-          <div class="tool-item">
-
-            <span>Files</span>
-
-            <strong>
-              Drive
-            </strong>
-
-          </div>
-
-          <div class="tool-item">
-
-            <span>Notes</span>
-
-            <strong>
-              Notion
-            </strong>
-
-          </div>
-
-          <div class="tool-item">
-
-            <span>Tasks</span>
-
-            <strong>
-              Spreadsheets
-            </strong>
-
-          </div>
-
-        </div>
-
-
-        <div class="problem-result">
-
-          <span>
-            Too many places.
+          <span class="brand-name">
+            KlientBond
           </span>
 
-          <strong>
-            Nothing feels connected.
-          </strong>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         SOLUTION
-    ==================================================== -->
-
-    <section class="solution section">
-
-      <div class="container">
-
-        <div class="solution-card">
-
-          <div class="solution-content">
-
-            <p class="section-label">
-              MEET KLIENTBOND
-            </p>
-
-            <h2>
-              One workspace for
-              the entire client journey.
-            </h2>
-
-            <p>
-              From the moment a lead comes in to
-              the moment a project is completed,
-              KlientBond keeps everything organized
-              around the client.
-            </p>
-
-          </div>
-
-
-          <div class="journey">
-
-            <div class="journey-step">
-              <span>01</span>
-              <strong>Lead</strong>
-            </div>
-
-            <i aria-hidden="true">→</i>
-
-            <div class="journey-step">
-              <span>02</span>
-              <strong>Client</strong>
-            </div>
-
-            <i aria-hidden="true">→</i>
-
-            <div class="journey-step">
-              <span>03</span>
-              <strong>Project</strong>
-            </div>
-
-            <i aria-hidden="true">→</i>
-
-            <div class="journey-step">
-              <span>04</span>
-              <strong>Delivery</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         FEATURES
-    ==================================================== -->
-
-    <section class="features section">
-
-      <div class="container">
-
-        <div class="section-intro">
-
-          <p class="section-label">
-            EVERYTHING CONNECTED
-          </p>
-
-          <h2>
-            Less managing.
-            More doing.
-          </h2>
-
-        </div>
-
-
-        <div class="feature-grid">
-
-          <article class="feature-card">
-
-            <div class="feature-icon">
-              01
-            </div>
-
-            <h3>
-              Client management
-            </h3>
-
-            <p>
-              Keep client details, activity,
-              projects and important context
-              together.
-            </p>
-
-          </article>
-
-
-          <article class="feature-card">
-
-            <div class="feature-icon">
-              02
-            </div>
-
-            <h3>
-              Projects & tasks
-            </h3>
-
-            <p>
-              Know what is happening,
-              what needs attention and
-              what comes next.
-            </p>
-
-          </article>
-
-
-          <article class="feature-card">
-
-            <div class="feature-icon">
-              03
-            </div>
-
-            <h3>
-              Deliverables & reviews
-            </h3>
-
-            <p>
-              Organize work, share deliverables
-              and keep revisions from becoming chaos.
-            </p>
-
-          </article>
-
-
-          <article class="feature-card">
-
-            <div class="feature-icon">
-              04
-            </div>
-
-            <h3>
-              Follow-ups
-            </h3>
-
-            <p>
-              Keep important client follow-ups
-              visible so opportunities don't
-              quietly disappear.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         FINAL CTA
-    ==================================================== -->
-
-    <section
-      class="final-cta"
-      id="waitlist"
-    >
-
-      <div class="container">
-
-        <div class="cta-card">
-
-          <div class="cta-glow"></div>
-
-          <div class="cta-content">
-
-            <p class="section-label">
-              EARLY ACCESS
-            </p>
-
-            <h2>
-              Be among the first
-              to use KlientBond.
-            </h2>
-
-            <p>
-              Join the waitlist and get notified
-              when early access opens.
-            </p>
-
-            <form
-              class="waitlist-form cta-form"
-              id="ctaWaitlist"
-            >
-
-              <label
-                for="cta-email"
-                class="sr-only"
-              >
-                Email address
-              </label>
-
-              <input
-                type="email"
-                id="cta-email"
-                name="email"
-                placeholder="Enter your email"
-                autocomplete="email"
-                required
-              >
-
-              <button type="submit">
-                Join the waitlist
-                <span aria-hidden="true">→</span>
-              </button>
-
-            </form>
-
-            <p class="form-note">
-              No spam. Just KlientBond updates.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         FAQ
-    ==================================================== -->
-
-    <section class="faq section">
-
-      <div class="container">
-
-        <div class="section-intro">
-
-          <p class="section-label">
-            FAQ
-          </p>
-
-          <h2>
-            Questions, answered.
-          </h2>
-
-        </div>
-
-
-        <div class="faq-list">
-
-          <button
-            class="faq-item"
-            type="button"
-          >
-
-            <span class="faq-question">
-              What is KlientBond?
-            </span>
-
-            <span
-              class="faq-icon"
-              aria-hidden="true"
-            >
-              +
-            </span>
-
-            <span class="faq-answer">
-              KlientBond is a workspace designed
-              to help freelancers, agencies and
-              service businesses organize the
-              entire client journey.
-            </span>
-
-          </button>
-
-
-          <button
-            class="faq-item"
-            type="button"
-          >
-
-            <span class="faq-question">
-              Who is KlientBond for?
-            </span>
-
-            <span
-              class="faq-icon"
-              aria-hidden="true"
-            >
-              +
-            </span>
-
-            <span class="faq-answer">
-              It is built for people and teams
-              who manage client-based work,
-              including freelancers, agencies,
-              consultants and studios.
-            </span>
-
-          </button>
-
-
-          <button
-            class="faq-item"
-            type="button"
-          >
-
-            <span class="faq-question">
-              Is KlientBond a messaging app?
-            </span>
-
-            <span
-              class="faq-icon"
-              aria-hidden="true"
-            >
-              +
-            </span>
-
-            <span class="faq-answer">
-              No. KlientBond focuses on organizing
-              the client journey and the work around
-              your clients. It does not replace the
-              communication tools you already use.
-            </span>
-
-          </button>
-
-
-          <button
-            class="faq-item"
-            type="button"
-          >
-
-            <span class="faq-question">
-              When will KlientBond launch?
-            </span>
-
-            <span
-              class="faq-icon"
-              aria-hidden="true"
-            >
-              +
-            </span>
-
-            <span class="faq-answer">
-              Early access will open to waitlist
-              members first. Join the waitlist to
-              hear when it becomes available.
-            </span>
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-
-  <footer class="footer">
-
-    <div class="container footer-inner">
-
-      <a
-        href="#"
-        class="brand"
-        aria-label="KlientBond home"
-      >
-
-        <img
-          src="assets/logo.jpg"
-          alt="KlientBond"
-          class="brand-logo"
+        </a>
+
+        <a
+          href="#waitlist"
+          class="nav-cta"
         >
-
-        <span class="brand-name">
-          KlientBond
-        </span>
-
-      </a>
-
-
-      <p>
-        Your client business, organized.
-      </p>
-
-
-      <div class="footer-links">
-
-        <a href="#waitlist">
           Join waitlist
         </a>
 
-        <a href="#">
-          Privacy
+      </nav>
+
+    </header>
+
+
+    <main>
+
+      <!-- ===================================================
+          HERO
+      ==================================================== -->
+
+      <section class="hero">
+
+        <div class="container hero-content">
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            The modern client workspace
+          </div>
+
+          <h1>
+            Your client business,
+            <span>organized.</span>
+          </h1>
+
+          <p class="hero-description">
+            Manage your clients, projects, deliverables,
+            files and follow-ups from one beautifully
+            organized workspace.
+          </p>
+
+          <form
+            class="waitlist-form"
+            id="heroWaitlist"
+          >
+
+            <label
+              for="hero-email"
+              class="sr-only"
+            >
+              Email address
+            </label>
+
+            <input
+              type="email"
+              id="hero-email"
+              name="email"
+              placeholder="Enter your email"
+              autocomplete="email"
+              required
+            >
+
+            <button type="submit">
+              Join the waitlist
+              <span aria-hidden="true">→</span>
+            </button>
+
+          </form>
+
+          <p class="form-note">
+            Free to join · Be first to get early access
+          </p>
+
+        </div>
+
+
+        <!-- =================================================
+            PRODUCT PREVIEW
+        ================================================== -->
+
+        <div class="container hero-preview">
+
+          <div class="browser-frame">
+
+            <div class="browser-top">
+
+              <div class="browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="browser-address">
+                klientbond
+              </div>
+
+            </div>
+
+            <div class="product-screenshot">
+
+              <img
+                src="assets/KlientBond-Screenshot.png"
+                alt="KlientBond client workspace dashboard"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+          AUDIENCE
+      ==================================================== -->
+
+      <section class="audience section">
+
+        <div class="container">
+
+          <p class="section-label">
+            BUILT FOR
+          </p>
+
+          <h2>
+            People who do client work.
+          </h2>
+
+          <div class="audience-list">
+
+            <span>Freelancers</span>
+            <span>Agencies</span>
+            <span>Consultants</span>
+            <span>Studios</span>
+            <span>Service businesses</span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+          PROBLEM
+      ==================================================== -->
+
+      <section class="problem section">
+
+        <div class="container">
+
+          <div class="section-intro">
+
+            <p class="section-label">
+              THE PROBLEM
+            </p>
+
+            <h2>
+              Your client work shouldn't
+              live everywhere.
+            </h2>
+
+            <p class="section-description">
+              Clients, projects, files, tasks and
+              follow-ups quickly become scattered
+              across different tools.
+            </p>
+
+          </div>
+
+
+          <div class="tool-stack">
+
+            <div class="tool-item">
+
+              <span>Messages</span>
+
+              <strong>
+                WhatsApp
+              </strong>
+
+            </div>
+
+            <div class="tool-item">
+
+              <span>Files</span>
+
+              <strong>
+                Drive
+              </strong>
+
+            </div>
+
+            <div class="tool-item">
+
+              <span>Notes</span>
+
+              <strong>
+                Notion
+              </strong>
+
+            </div>
+
+            <div class="tool-item">
+
+              <span>Tasks</span>
+
+              <strong>
+                Spreadsheets
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="problem-result">
+
+            <span>
+              Too many places.
+            </span>
+
+            <strong>
+              Nothing feels connected.
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+          SOLUTION
+      ==================================================== -->
+
+      <section class="solution section">
+
+        <div class="container">
+
+          <div class="solution-card">
+
+            <div class="solution-content">
+
+              <p class="section-label">
+                MEET KLIENTBOND
+              </p>
+
+              <h2>
+                One workspace for
+                the entire client journey.
+              </h2>
+
+              <p>
+                From the moment a lead comes in to
+                the moment a project is completed,
+                KlientBond keeps everything organized
+                around the client.
+              </p>
+
+            </div>
+
+
+            <div class="journey">
+
+              <div class="journey-step">
+                <span>01</span>
+                <strong>Lead</strong>
+              </div>
+
+              <i aria-hidden="true">→</i>
+
+              <div class="journey-step">
+                <span>02</span>
+                <strong>Client</strong>
+              </div>
+
+              <i aria-hidden="true">→</i>
+
+              <div class="journey-step">
+                <span>03</span>
+                <strong>Project</strong>
+              </div>
+
+              <i aria-hidden="true">→</i>
+
+              <div class="journey-step">
+                <span>04</span>
+                <strong>Delivery</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+          FEATURES
+      ==================================================== -->
+
+      <section class="features section">
+
+        <div class="container">
+
+          <div class="section-intro">
+
+            <p class="section-label">
+              EVERYTHING CONNECTED
+            </p>
+
+            <h2>
+              Less managing.
+              More doing.
+            </h2>
+
+          </div>
+
+
+          <div class="feature-grid">
+
+            <article class="feature-card">
+
+              <div class="feature-icon">
+                01
+              </div>
+
+              <h3>
+                Client management
+              </h3>
+
+              <p>
+                Keep client details, activity,
+                projects and important context
+                together.
+              </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+              <div class="feature-icon">
+                02
+              </div>
+
+              <h3>
+                Projects & tasks
+              </h3>
+
+              <p>
+                Know what is happening,
+                what needs attention and
+                what comes next.
+              </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+              <div class="feature-icon">
+                03
+              </div>
+
+              <h3>
+                Deliverables & reviews
+              </h3>
+
+              <p>
+                Organize work, share deliverables
+                and keep revisions from becoming chaos.
+              </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+              <div class="feature-icon">
+                04
+              </div>
+
+              <h3>
+                Follow-ups
+              </h3>
+
+              <p>
+                Keep important client follow-ups
+                visible so opportunities don't
+                quietly disappear.
+              </p>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+          FINAL CTA
+      ==================================================== -->
+
+      <section
+        class="final-cta"
+        id="waitlist"
+      >
+
+        <div class="container">
+
+          <div class="cta-card">
+
+            <div class="cta-glow"></div>
+
+            <div class="cta-content">
+
+              <p class="section-label">
+                EARLY ACCESS
+              </p>
+
+              <h2>
+                Be among the first
+                to use KlientBond.
+              </h2>
+
+              <p>
+                Join the waitlist and get notified
+                when early access opens.
+              </p>
+
+              <form
+                class="waitlist-form cta-form"
+                id="ctaWaitlist"
+              >
+
+                <label
+                  for="cta-email"
+                  class="sr-only"
+                >
+                  Email address
+                </label>
+
+                <input
+                  type="email"
+                  id="cta-email"
+                  name="email"
+                  placeholder="Enter your email"
+                  autocomplete="email"
+                  required
+                >
+
+                <button type="submit">
+                  Join the waitlist
+                  <span aria-hidden="true">→</span>
+                </button>
+
+              </form>
+
+              <p class="form-note">
+                No spam. Just KlientBond updates.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+          FAQ
+      ==================================================== -->
+
+      <section class="faq section">
+
+        <div class="container">
+
+          <div class="section-intro">
+
+            <p class="section-label">
+              FAQ
+            </p>
+
+            <h2>
+              Questions, answered.
+            </h2>
+
+          </div>
+
+
+          <div class="faq-list">
+
+            <button
+              class="faq-item"
+              type="button"
+            >
+
+              <span class="faq-question">
+                What is KlientBond?
+              </span>
+
+              <span
+                class="faq-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+              <span class="faq-answer">
+                KlientBond is a workspace designed
+                to help freelancers, agencies and
+                service businesses organize the
+                entire client journey.
+              </span>
+
+            </button>
+
+
+            <button
+              class="faq-item"
+              type="button"
+            >
+
+              <span class="faq-question">
+                Who is KlientBond for?
+              </span>
+
+              <span
+                class="faq-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+              <span class="faq-answer">
+                It is built for people and teams
+                who manage client-based work,
+                including freelancers, agencies,
+                consultants and studios.
+              </span>
+
+            </button>
+
+
+            <button
+              class="faq-item"
+              type="button"
+            >
+
+              <span class="faq-question">
+                Is KlientBond a messaging app?
+              </span>
+
+              <span
+                class="faq-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+              <span class="faq-answer">
+                No. KlientBond focuses on organizing
+                the client journey and the work around
+                your clients. It does not replace the
+                communication tools you already use.
+              </span>
+
+            </button>
+
+
+            <button
+              class="faq-item"
+              type="button"
+            >
+
+              <span class="faq-question">
+                When will KlientBond launch?
+              </span>
+
+              <span
+                class="faq-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+              <span class="faq-answer">
+                Early access will open to waitlist
+                members first. Join the waitlist to
+                hear when it becomes available.
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- =====================================================
+        FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+      <div class="container footer-inner">
+
+        <a
+          href="#"
+          class="brand"
+          aria-label="KlientBond home"
+        >
+
+          <img
+            src="assets/logo.jpg"
+            alt="KlientBond"
+            class="brand-logo"
+          >
+
+          <span class="brand-name">
+            KlientBond
+          </span>
+
         </a>
 
-        <a href="#">
-          Terms
-        </a>
+
+        <p>
+          Your client business, organized.
+        </p>
+
+
+        <div class="footer-links">
+
+          <a href="#waitlist">
+            Join waitlist
+          </a>
+
+          <a href="#">
+            Privacy
+          </a>
+
+          <a href="#">
+            Terms
+          </a>
+
+        </div>
+
+
+        <small>
+          © 2026 KlientBond. All rights reserved.
+        </small>
 
       </div>
 
-
-      <small>
-        © 2026 KlientBond. All rights reserved.
-      </small>
-
-    </div>
-
-  </footer>
+    </footer>
 
 
-  <!-- =====================================================
-       VERIFICATION MODAL
-  ====================================================== -->
-
-  <div
-    class="verification-modal"
-    id="verificationModal"
-    aria-hidden="true"
-  >
-
-    <div class="verification-overlay"></div>
-
+    <!-- =====================================================
+        VERIFICATION MODAL
+    ====================================================== -->
 
     <div
-      class="verification-modal-card"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="verificationTitle"
+      class="verification-modal"
+      id="verificationModal"
+      aria-hidden="true"
     >
 
-      <button
-        class="modal-close"
-        id="closeVerificationModal"
-        type="button"
-        aria-label="Close"
+      <div class="verification-overlay"></div>
+
+
+      <div
+        class="verification-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="verificationTitle"
       >
-        ×
-      </button>
+
+        <button
+          class="modal-close"
+          id="closeVerificationModal"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
 
 
-      <div class="modal-icon">
-        ✉
+        <div class="modal-icon">
+          ✉
+        </div>
+
+
+        <p class="section-label">
+          ALMOST THERE
+        </p>
+
+
+        <h2 id="verificationTitle">
+          Check your inbox.
+        </h2>
+
+
+        <p class="verification-modal-text">
+          We sent a verification link to
+          <strong id="verificationEmail">
+            your email
+          </strong>.
+        </p>
+
+
+        <p class="verification-expiry">
+          The link expires in 30 minutes.
+        </p>
+
+
+        <button
+          class="resend-button"
+          id="resendVerification"
+          type="button"
+        >
+          Resend verification email
+        </button>
+
+
+        <p
+          class="resend-status"
+          id="resendStatus"
+        ></p>
+
       </div>
-
-
-      <p class="section-label">
-        ALMOST THERE
-      </p>
-
-
-      <h2 id="verificationTitle">
-        Check your inbox.
-      </h2>
-
-
-      <p class="verification-modal-text">
-        We sent a verification link to
-        <strong id="verificationEmail">
-          your email
-        </strong>.
-      </p>
-
-
-      <p class="verification-expiry">
-        The link expires in 30 minutes.
-      </p>
-
-
-      <button
-        class="resend-button"
-        id="resendVerification"
-        type="button"
-      >
-        Resend verification email
-      </button>
-
-
-      <p
-        class="resend-status"
-        id="resendStatus"
-      ></p>
 
     </div>
 
-  </div>
+
+    <!-- =====================================================
+        TOAST
+    ====================================================== -->
+
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+    ></div>
 
 
-  <!-- =====================================================
-       TOAST
-  ====================================================== -->
+    <script src="main.js"></script>
 
-  <div
-    class="toast"
-    id="toast"
-    role="status"
-    aria-live="polite"
-  ></div>
-
-
-  <script src="main.js"></script>
-
-</body>
+  </body>
 </html>
