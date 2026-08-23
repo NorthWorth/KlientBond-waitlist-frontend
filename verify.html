@@ -10,10 +10,10 @@
 
   <meta
     name="description"
-    content="Verify your KlientBond waitlist email."
+    content="Verify your Rayern waitlist email."
   />
 
-  <title>Verify your email - KlientBond</title>
+  <title>Verify your email - Rayern</title>
 
   <link rel="stylesheet" href="style.css"/>
 
@@ -319,10 +319,10 @@
         >
 
           <span class="verify-logo-mark">
-            K
+            R
           </span>
 
-          KlientBond
+          Rayern
 
         </a>
 
@@ -371,7 +371,7 @@
           <p class="verify-message">
             We're confirming your email address
             and securing your place on the
-            KlientBond waitlist.
+            Rayern waitlist.
           </p>
 
         </div>
@@ -403,7 +403,7 @@
 
           <p class="verify-message">
             Your email has been verified and
-            your place on the KlientBond
+            your place on the Rayern
             waitlist is confirmed.
           </p>
 
@@ -412,7 +412,7 @@
             href="./index.html"
             class="verify-action"
           >
-            Back to KlientBond
+            Back to Rayern
           </a>
 
         </div>
@@ -455,7 +455,7 @@
             href="./index.html"
             class="verify-action"
           >
-            Back to KlientBond
+            Back to Rayern
           </a>
 
         </div>
@@ -471,7 +471,7 @@
 
     <footer class="verify-footer">
 
-      © 2026 KlientBond. All rights reserved.
+      © 2026 Rayern. All rights reserved.
 
     </footer>
 
@@ -485,7 +485,10 @@
   <script>
 
     const API_URL =
-      "http://localhost:5000";
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1"
+        ? "http://localhost:5000"
+        : "https://klientbond-waitlist-backend.onrender.com/";
 
 
     const loadingState =
