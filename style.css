@@ -275,6 +275,7 @@ a {
   margin-top: 30px;
 
   display: flex;
+  flex-wrap: wrap;
   gap: 9px;
 
   padding: 5px;
@@ -288,7 +289,7 @@ a {
     0 12px 35px rgba(17, 22, 42, 0.08);
 }
 
-.waitlist-form input {
+.waitlist-form input:not([type="checkbox"]) {
   min-width: 0;
   flex: 1;
 
@@ -335,6 +336,38 @@ a {
   opacity: 0.65;
   cursor: not-allowed;
   transform: none;
+}
+
+/* Explicit marketing opt-in. Sits on its own row inside the form
+   card. UNCHECKED by default — consent is never pre-selected and
+   never required to join the waitlist. */
+.consent-check {
+  flex-basis: 100%;
+
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  margin-top: 2px;
+  padding: 4px 8px 6px;
+
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.55;
+
+  cursor: pointer;
+}
+
+.consent-check input[type="checkbox"] {
+  flex-shrink: 0;
+
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+
+  accent-color: var(--purple);
+
+  cursor: pointer;
 }
 
 .form-note {
@@ -1192,9 +1225,15 @@ a {
     border-radius: 13px;
   }
 
-  .waitlist-form input {
+  .waitlist-form input:not([type="checkbox"]) {
     width: 100%;
     padding: 13px 12px;
+  }
+
+  /* flex-basis is the vertical axis in the stacked layout. */
+  .consent-check {
+    flex-basis: auto;
+    padding: 2px 6px 5px;
   }
 
   .waitlist-form button {
