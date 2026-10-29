@@ -92,9 +92,7 @@ function openVerificationModal(email) {
 
 function closeModal() {
 
-  verificationModal.classList.remove(
-    "open"
-  );
+  verificationModal.classList.remove("open");
 
   verificationModal.setAttribute(
     "aria-hidden",
@@ -153,6 +151,21 @@ async function submitWaitlist(
     form.querySelector("button");
 
 
+  /*
+   * Explicit marketing opt-in: read from the UNCHECKED
+   * checkbox on this form. Absent checkbox or unchecked
+   * box always submits false — consent is never inferred
+   * from joining the waitlist or verifying the email.
+   */
+  const consentCheckbox =
+    form.querySelector(
+      'input[type="checkbox"]'
+    );
+
+  const marketingConsent =
+    Boolean(consentCheckbox?.checked);
+
+
   const originalText =
     button.innerHTML;
 
@@ -177,7 +190,8 @@ async function submitWaitlist(
           },
 
           body: JSON.stringify({
-            email
+            email,
+            marketingConsent
           })
         }
       );
@@ -408,12 +422,10 @@ function startResendCooldown() {
 
   const timer =
     setInterval(() => {
-
       seconds--;
 
 
       if (seconds <= 0) {
-
         clearInterval(timer);
 
 
@@ -461,11 +473,9 @@ faqItems.forEach((item) => {
 
 
       faqItems.forEach((faq) => {
-
         faq.classList.remove(
           "open"
         );
-
       });
 
 
@@ -474,10 +484,117 @@ faqItems.forEach((item) => {
         item.classList.add(
           "open"
         );
-
       }
-
     }
   );
-
 });
+
+
+/* =========================================================
+   FIRST-PARTY VISITOR MEASUREMENT (Rayern acquisition funnel)
+=========================================================
+
+   A real, documented analytics source — no third-party
+   dependency. On the first visit of each UTC day this page
+   beacons Rayern's own API with an anonymous, random
+   first-party id plus UTM values, the referrer HOSTNAME and
+   the bare path.
+
+   Privacy: no cookies, no IP storage, no fingerprint, no
+   full referrer URL, no query strings. The API deduplicates
+   to one row per (visitor, day) and the dashboard reads only
+   counts.
+
+   Failure is silent by design: CORS rejection (origin not
+   configured in LANDING_PAGE_URL), an unreachable API or
+   storage restrictions must never disturb the page. At most
+   one beacon per UTC day per browser.
+========================================================= */
+
+const RAYERN_API_URL =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://localhost:5000"
+    : "https://rayern-backend.onrender.com";
+
+const VISITOR_ID_KEY = "rayern_visitor_id";
+const VISITOR_DAY_KEY = "rayern_visitor_beacon_day";
+
+function getOrCreateVisitorId() {
+  try {
+    let id = localStorage.getItem(VISITOR_ID_KEY);
+
+    if (!id || !/^[A-Za-z0-9_-]{8,64}$/.test(id)) {
+      id =
+        typeof crypto !== "undefined" && crypto.randomUUID
+          ? crypto.randomUUID().replace(/-/g, "")
+          : `v${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
+
+      id = id.slice(0, 32);
+      localStorage.setItem(VISITOR_ID_KEY, id);
+    }
+
+    return id;
+  } catch {
+    return null;
+  }
+}
+
+function currentUtcDay() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function sendVisitBeacon() {
+  try {
+    const visitorId = getOrCreateVisitorId();
+
+    if (!visitorId) return;
+
+    const today = currentUtcDay();
+
+    if (localStorage.getItem(VISITOR_DAY_KEY) === today) return;
+
+    localStorage.setItem(VISITOR_DAY_KEY, today);
+
+    const params = new URLSearchParams(window.location.search);
+
+    const clean = (value, max) =>
+      typeof value === "string" && value.trim()
+        ? value.replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, max)
+        : null;
+
+    let referrerHost = null;
+
+    try {
+      referrerHost = document.referrer
+        ? new URL(document.referrer).hostname.slice(0, 128)
+        : null;
+    } catch {
+      referrerHost = null;
+    }
+
+    const payload = {
+      visitorId,
+      source: clean(params.get("utm_source"), 64),
+      medium: clean(params.get("utm_medium"), 64),
+      campaign: clean(params.get("utm_campaign"), 128),
+      referrerHost,
+      path: window.location.pathname.slice(0, 256)
+    };
+
+    fetch(`${RAYERN_API_URL}/api/v1/visitors/visit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      mode: "cors",
+      credentials: "omit",
+      keepalive: true
+    }).catch(() => {
+      // Telemetry never surfaces to visitors.
+    });
+  } catch {
+    // Same contract: swallow.
+  }
+}
+
+sendVisitBeacon();
