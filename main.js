@@ -92,7 +92,9 @@ function openVerificationModal(email) {
 
 function closeModal() {
 
-  verificationModal.classList.remove("open");
+  verificationModal.classList.remove(
+    "open"
+  );
 
   verificationModal.setAttribute(
     "aria-hidden",
@@ -422,10 +424,12 @@ function startResendCooldown() {
 
   const timer =
     setInterval(() => {
+
       seconds--;
 
 
       if (seconds <= 0) {
+
         clearInterval(timer);
 
 
@@ -473,9 +477,11 @@ faqItems.forEach((item) => {
 
 
       faqItems.forEach((faq) => {
+
         faq.classList.remove(
           "open"
         );
+
       });
 
 
@@ -484,9 +490,12 @@ faqItems.forEach((item) => {
         item.classList.add(
           "open"
         );
+
       }
+
     }
   );
+
 });
 
 
