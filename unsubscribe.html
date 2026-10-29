@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Manage Rayern marketing email preferences."
+  />
+
+  <title>Marketing email preferences - Rayern</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    /* =====================================================
+       MARKETING PREFERENCE (OPT-OUT) PAGE
+       Same visual language as verify.html.
+    ===================================================== */
+
+    .verify-page {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+
+      background: var(--background);
+
+      color: var(--text);
+    }
+
+
+    .verify-header {
+      width: 100%;
+
+      padding: 24px 0;
+    }
+
+
+    .verify-header .container {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .verify-logo {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      color: var(--text);
+
+      text-decoration: none;
+
+      font-size: 19px;
+
+      font-weight: 800;
+
+      letter-spacing: -0.5px;
+    }
+
+
+    .verify-logo-mark {
+      width: 28px;
+      height: 28px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 8px;
+
+      background: var(--purple);
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 800;
+    }
+
+
+    .verify-main {
+      flex: 1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 50px 20px 90px;
+    }
+
+
+    .verify-card {
+      width: min(100%, 480px);
+
+      padding: 42px 28px;
+
+      text-align: center;
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 24px;
+
+      box-shadow:
+        0 24px 70px
+        rgba(20, 18, 40, 0.07);
+    }
+
+
+    .verify-card h1 {
+      margin-top: 22px;
+
+      font-size: 26px;
+
+      letter-spacing: -0.6px;
+    }
+
+
+    .verify-card p {
+      margin-top: 14px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.7;
+    }
+
+
+    .preference-email {
+      display: inline-block;
+
+      margin-top: 18px;
+
+      padding: 9px 15px;
+
+      background: #f4f4fb;
+
+      border: 1px solid var(--border);
+
+      border-radius: 10px;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      word-break: break-all;
+    }
+
+
+    .preference-actions {
+      margin-top: 26px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+
+    .preference-button {
+      width: 100%;
+
+      padding: 14px 18px;
+
+      border: 0;
+      border-radius: 12px;
+
+      background: var(--purple);
+
+      color: #ffffff;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition: background 0.2s ease;
+    }
+
+
+    .preference-button:hover {
+      background: var(--purple-dark);
+    }
+
+
+    .preference-button:disabled {
+      opacity: 0.65;
+
+      cursor: not-allowed;
+    }
+
+
+    .preference-status {
+      margin-top: 18px;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+    .preference-status.ok {
+      color: #15803d;
+    }
+
+
+    .preference-status.error {
+      color: #b91c1c;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="verify-page">
+
+    <header class="verify-header">
+      <div class="container">
+        <a class="verify-logo" href="index.html">
+          <span class="verify-logo-mark">R</span>
+          Rayern
+        </a>
+      </div>
+    </header>
+
+    <main class="verify-main">
+      <div class="verify-card">
+
+        <span
+          class="verify-logo-mark"
+          style="margin: 0 auto;"
+          aria-hidden="true"
+        >R</span>
+
+        <h1>Marketing email preferences</h1>
+
+        <p id="preferenceIntro">
+          Stop receiving marketing emails from Rayern for the
+          address below. This does not affect your waitlist
+          membership or email verification — it only withdraws
+          marketing consent.
+        </p>
+
+        <span
+          class="preference-email"
+          id="preferenceEmail"
+        ></span>
+
+        <div class="preference-actions">
+          <button
+            type="button"
+            class="preference-button"
+            id="optOutButton"
+          >
+            Stop marketing emails
+          </button>
+        </div>
+
+        <p
+          class="preference-status"
+          id="preferenceStatus"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    /* Same environment switch as main.js / verify.html. */
+    const API_URL =
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1"
+        ? "http://localhost:5000"
+        : "https://klientbond-waitlist-backend.onrender.com";
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const email =
+      (params.get("email") || "").trim().toLowerCase();
+
+    const emailEl =
+      document.getElementById("preferenceEmail");
+
+    const button =
+      document.getElementById("optOutButton");
+
+    const statusEl =
+      document.getElementById("preferenceStatus");
+
+    function setStatus(message, kind) {
+      statusEl.textContent = message;
+      statusEl.className =
+        "preference-status" + (kind ? " " + kind : "");
+    }
+
+    if (!email) {
+      emailEl.textContent = "No email address in this link.";
+      button.disabled = true;
+      setStatus(
+        "This link is missing your email address. " +
+          "Open the unsubscribe link from your email, or opt out " +
+          "by submitting the waitlist form again with the " +
+          "checkbox cleared.",
+        "error"
+      );
+    } else {
+      emailEl.textContent = email;
+    }
+
+    button.addEventListener("click", async () => {
+      if (!email) return;
+
+      button.disabled = true;
+      setStatus("Saving your preference…");
+
+      try {
+        const response = await fetch(
+          `${API_URL}/api/waitlist/consent`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              email,
+              optedIn: false
+            })
+          }
+        );
+
+        const data = await response.json().catch(() => null);
+
+        if (!response.ok) {
+          throw new Error(
+            data?.message ||
+              "Unable to update your preference."
+          );
+        }
+
+        setStatus(
+          "Done — you will no longer receive marketing " +
+            "emails for this address.",
+          "ok"
+        );
+        button.textContent = "Preference saved";
+      } catch (error) {
+        setStatus(
+          error.message ||
+            "Unable to update your preference. Please try again.",
+          "error"
+        );
+        button.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
