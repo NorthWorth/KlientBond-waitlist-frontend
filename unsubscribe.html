@@ -296,8 +296,31 @@
     const params =
       new URLSearchParams(window.location.search);
 
+    /*
+      Two link shapes reach this page:
+
+        ?token=…  opaque record-id token — what NEW campaign
+                  emails ship. The address deliberately never
+                  appears in the URL.
+        ?email=…  legacy links already delivered by earlier
+                  campaigns, kept working so they do not rot.
+
+      The token wins when both are present (it is the
+      signature-checked input). Neither can opt an address IN:
+      this endpoint only withdraws consent.
+    */
+    const token =
+      (params.get("token") || "").trim();
+
     const email =
       (params.get("email") || "").trim().toLowerCase();
+
+    const hasToken = token.length > 0;
+    const hasEmail = email.length > 0;
+    const hasTarget = hasToken || hasEmail;
+
+    const introEl =
+      document.getElementById("preferenceIntro");
 
     const emailEl =
       document.getElementById("preferenceEmail");
@@ -314,7 +337,7 @@
         "preference-status" + (kind ? " " + kind : "");
     }
 
-    if (!email) {
+    if (!hasTarget) {
       emailEl.textContent = "No email address in this link.";
       button.disabled = true;
       setStatus(
@@ -324,12 +347,24 @@
           "checkbox cleared.",
         "error"
       );
-    } else {
+    } else if (hasEmail) {
       emailEl.textContent = email;
+    } else {
+      /*
+        Token-only link: the address is not in the URL, so the
+        page has nothing to echo back — and must not go looking
+        for it. The button still works; it posts the token.
+      */
+      introEl.textContent =
+        "Stop receiving marketing emails from Rayern for the " +
+        "address you joined the waitlist with. This does not " +
+        "affect your waitlist membership or email verification — " +
+        "it only withdraws marketing consent.";
+      emailEl.hidden = true;
     }
 
     button.addEventListener("click", async () => {
-      if (!email) return;
+      if (!hasTarget) return;
 
       button.disabled = true;
       setStatus("Saving your preference…");
@@ -342,10 +377,11 @@
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-              email,
-              optedIn: false
-            })
+            body: JSON.stringify(
+              hasToken
+                ? { token, optedIn: false }
+                : { email, optedIn: false }
+            )
           }
         );
 
